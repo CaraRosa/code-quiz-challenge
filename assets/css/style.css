@@ -17,3 +17,19 @@
     transform: translate(-50%, -50%);
 }
 
+/* ID Selector */
+/* Sets color for button and button text */
+/* Sets button size */
+#start {
+    background-color: purple;
+    border: purple;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+/* .button:hover {
+    background-color: plum;
+} */
