@@ -1,6 +1,14 @@
+h1 {
+    text-align: center;
+    position: absolute;
+    top: 30px;
+    right: 330px;
+    left: 340px;
+}
+
 /* Class Selector */
-/* Sets the height relative to the top of the browser window */
-/* Sets position away from normal position */
+/* Sets the button height relative to the top of the browser window */
+/* Sets button position away from normal position */
 .container {
     height: 200px;
     position: relative;
