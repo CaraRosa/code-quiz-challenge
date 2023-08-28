@@ -1,3 +1,15 @@
+/* ID Selector */
+/* Places the timer to the right of the page */
+#count
+{
+    position: absolute;
+    right: 0;
+    width: 60px;
+    height: 120px;
+}
+
+/* Element Selectors */
+/* Positions the header 1 */
 h1 {
     text-align: center;
     position: absolute;
@@ -6,11 +18,20 @@ h1 {
     left: 340px;
 }
 
+/* Positions the paragraph text */
+p {
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    right: 330px;
+    left: 340px;
+}
+
 /* Class Selector */
 /* Sets the button height relative to the top of the browser window */
 /* Sets button position away from normal position */
 .container {
-    height: 200px;
+    height: 140px;
     position: relative;
 }
 
@@ -42,12 +63,3 @@ h1 {
     background-color: plum;
 } */
 
-/* ID Selector */
-/* Places the timer to the right of the page */
-#count
-{
-    position: absolute;
-    right: 0;
-    width: 60px;
-    height: 120px;
-}
