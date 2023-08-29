@@ -1,6 +1,16 @@
 // Accessing elements by ID
 var questionElement = document.querySelector("#question");
-var responeElement = document.querySelector("#responses");
+var responseElement = document.querySelector("#responses");
+
+// Accessing elements by class
+var carousel = document.querySelector(".carouselbox");
+var next = carousel.querySelector(".next");
+var prev = carousel.querySelector(".prev");
+
+// Sets the index (number of questions) to 0 (first question)
+var index = 0;
+var questionResponseElement = document.querySelector("#responses");
+
 
 // Generating the data/carousel
 var questions = [
@@ -13,10 +23,10 @@ function navigate(direction) {
   // If the user tries to navigate "back" from the start:
   // Go to last question
   if (index < 0) {
-    index = images.length - 1;
+    index = questions.length - 1;
     // If the user is at the very end
     // Go to the first question
-  } else if (index > images.length - 1) {
+  } else if (index > questions.length - 1) {
     index = 0;
   }
   // Renders the question
@@ -31,34 +41,46 @@ function renderQuestion() {
   questionElement.textContent = questions[index].question;
 }
 
-// Update html with the users answer
 function renderAnswers() {
-  console.log("questions object", questions[index]);
+  console.log("questions object",questions[index]);
   console.log("list of responses", questions[index].responses);
-  // Clears the html by setting innerHTML to an empty string
+  // Clears the html by settting innerHTML to an empty string.
   questionResponseElement.innerHTML = "";
-  for (var i = 0; i < questions[index].responses.length; i++) {
+  for (var i = 0; i < questions[index].responses.length; i++ ) {
     console.log(questions[index].responses[i]);
     var li = document.createElement("li");
     li.textContent = questions[index].responses[i];
-
     questionResponseElement.appendChild(li);
   }
 }
 
+// Event listener for when user clicks on next button
+next.addEventListener("click", function(event) {
+  event.stopPropagation();
+  navigate(1);
+});
+
+// Event listener for when user clicks on previous button
+prev.addEventListener("click", function(event) {
+  event.stopPropagation();
+  navigate(-1);
+});
+
+navigate(0);
+
 // Timer starts when user pushes start button
-function startTimer(){
-    var counter = 5;
-    setInterval(function() {
-      counter--;
-      if (counter >= 0) {
-        span = document.getElementById("count");
-        span.innerHTML = "Time: " + counter;
-      }
-    }, 1000);
-  }
-  function start()
-  {
-      document.getElementById("count");
-      startTimer();
-  };
+// function startTimer(){
+//     var counter = 5;
+//     setInterval(function() {
+//       counter--;
+//       if (counter >= 0) {
+//         span = document.getElementById("count");
+//         span.innerHTML = "Time: " + counter;
+//       }
+//     }, 1000);
+//   }
+//   function start()
+//   {
+//       document.getElementById("count");
+//       startTimer();
+//   };
