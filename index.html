@@ -24,23 +24,23 @@ THEN I can save my initials and score -->
     <title>Code Quiz</title>
     <link rel = "stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
+
 <body>
-
-    <span id="count">Time: 5</span>
-    <div class="container" onclick="start()">
-        <div class="center">   
-    <button class="button" id="start">Start</button>
-    </div>
-</div>
-    <main>
-        <h1>Coding Quiz Challenge</h1>
+   <div class="container">
+    <h1>Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
-        <p id="question"></p>
-        <ul id="responses"></ul>
-    </main>
+    <div class="wrapper">
+        <div class="carouselbox" aria-label="carousel">
+            <button class="prev">
+                ◀ Previous
+            </button>
+            <button class="next">
+                Next ▶
+            </button>
+        </div>
+    </div>
+   </div> 
 
-
-   
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
