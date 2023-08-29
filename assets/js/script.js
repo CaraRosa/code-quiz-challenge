@@ -56,31 +56,29 @@ function renderAnswers() {
 
 // Event listener for when user clicks on next button
 next.addEventListener("click", function(event) {
-  event.stopPropagation();
   navigate(1);
 });
 
 // Event listener for when user clicks on previous button
 prev.addEventListener("click", function(event) {
-  event.stopPropagation();
   navigate(-1);
 });
 
 navigate(0);
 
 // Timer starts when user pushes start button
-// function startTimer(){
-//     var counter = 5;
-//     setInterval(function() {
-//       counter--;
-//       if (counter >= 0) {
-//         span = document.getElementById("count");
-//         span.innerHTML = "Time: " + counter;
-//       }
-//     }, 1000);
-//   }
-//   function start()
-//   {
-//       document.getElementById("count");
-//       startTimer();
-//   };
+function startTimer(){
+    var counter = 5;
+    setInterval(function() {
+      counter--;
+      if (counter >= 0) {
+        span = document.getElementById("count");
+        span.innerHTML = "Time: " + counter;
+      }
+    }, 1000);
+  }
+  function start()
+  {
+      document.getElementById("count");
+      startTimer();
+  };
