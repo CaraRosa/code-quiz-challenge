@@ -1,3 +1,7 @@
+// Accessing elements by ID
+var questionElement = document.querySelector("#question");
+var responeElement = document.querySelector("#responses");
+
 // Timer starts when user pushes start button
 function startTimer(){
     var counter = 5;
