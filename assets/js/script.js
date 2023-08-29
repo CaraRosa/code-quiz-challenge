@@ -1,6 +1,7 @@
 // Accessing elements by ID
 var questionElement = document.querySelector("#question");
 var responseElement = document.querySelector("#responses");
+var startElement = document.querySelector("#timer");
 
 // Accessing elements by class
 var carousel = document.querySelector(".carouselbox");
@@ -11,6 +12,25 @@ var prev = carousel.querySelector(".prev");
 var index = 0;
 var questionResponseElement = document.querySelector("#responses");
 
+// Timer starts when user pushes start button
+function startTimer(){
+  var counter = 5;
+  setInterval(function() {
+    counter--;
+    if (counter >= 0) {
+      span = document.querySelector("timer");
+      // Error
+      span.innerHTML = counter;
+    }
+  }, 1000);
+}
+function start()
+{
+    document.querySelector("timer");
+    startTimer();
+};
+
+startTimer();
 
 // Generating the data/carousel
 var questions = [
@@ -66,19 +86,3 @@ prev.addEventListener("click", function(event) {
 
 navigate(0);
 
-// Timer starts when user pushes start button
-function startTimer(){
-    var counter = 5;
-    setInterval(function() {
-      counter--;
-      if (counter >= 0) {
-        span = document.getElementById("count");
-        span.innerHTML = "Time: " + counter;
-      }
-    }, 1000);
-  }
-  function start()
-  {
-      document.getElementById("count");
-      startTimer();
-  };
