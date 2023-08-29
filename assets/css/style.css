@@ -85,26 +85,26 @@ body {
 /* Class Selector */
 /* Sets the button height relative to the top of the browser window */
 /* Sets button position away from normal position */
-/* .container {
+.timer {
     height: 140px;
     position: relative;
-} */
+}
 
 /* Class Selector */
 /* Centers the button */
-/* .center {
+.center-button {
     margin: 0;
     position: absolute;
-    top: 150%;
+    top: 70%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-} */
+}
 
 /* ID Selector */
 /* Sets color for button and button text */
 /* Sets button size */
-/* #start {
+#start {
     background-color: purple;
     border: purple;
     color: white;
@@ -112,9 +112,9 @@ body {
     cursor: pointer;
     border-radius: 5px;
     
-} */
+}
 
-/* .button:hover {
+.box:hover {
     background-color: plum;
-} */
+}
 
