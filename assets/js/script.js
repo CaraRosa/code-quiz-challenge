@@ -19,6 +19,10 @@ function navigate(direction) {
   } else if (index > images.length - 1) {
     index = 0;
   }
+  // Render the question
+  renderQuestion();
+  // Render the answer
+  renderAnswers();
 }
 
 // Timer starts when user pushes start button
