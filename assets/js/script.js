@@ -19,10 +19,31 @@ function navigate(direction) {
   } else if (index > images.length - 1) {
     index = 0;
   }
-  // Render the question
+  // Renders the question
   renderQuestion();
-  // Render the answer
+  // Renders the answer
   renderAnswers();
+}
+
+// Renders the question
+function renderQuestion() {
+  // Update the html with the current question
+  questionElement.textContent = questions[index].question;
+}
+
+// Update html with the users answer
+function renderAnswers() {
+  console.log("questions object", questions[index]);
+  console.log("list of responses", questions[index].responses);
+  // Clears the html by setting innerHTML to an empty string
+  questionResponseElement.innerHTML = "";
+  for (var i = 0; i < questions[index].responses.length; i++) {
+    console.log(questions[index].responses[i]);
+    var li = document.createElement("li");
+    li.textContent = questions[index].responses[i];
+
+    questionResponseElement.appendChild(li);
+  }
 }
 
 // Timer starts when user pushes start button
