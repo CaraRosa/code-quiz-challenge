@@ -26,12 +26,7 @@ THEN I can save my initials and score -->
 </head>
 
 <body>
-    <span id=“timer”>Time: 5</span>
-    <div class=“box” onclick="start()">
-        <div class="center-button"> 
-            <button class="button" id="start">Start</button>
-    </div>
-</div> 
+    
 
    <div class="container">
     <h1>Coding Quiz Challenge</h1>
@@ -49,6 +44,14 @@ THEN I can save my initials and score -->
         <p id="question"></p>
         <ul id="responses"></ul>
     </div>
+   </div>
+
+   <!-- Timer -->
+   <span id=“timer”>Time: </span>
+   <div class=“box” onclick="startTimer()"></div>
+       <div class="center-button"> 
+           <button class="button" id="start">Start</button>
+       </div>
    </div>
     <script src="./assets/js/script.js"></script>
 </body>
