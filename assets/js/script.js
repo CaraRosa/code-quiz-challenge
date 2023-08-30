@@ -20,7 +20,7 @@ function startTimer(){
     counter--;
     if (counter >= 0) {
       span = document.getElementById("count");
-      span.innerHTML = counter;
+      span.innerHTML = "Time left: " + counter;
     }
   }, 1000);
 }
@@ -28,12 +28,35 @@ function start()
 {
     document.getElementById("count").style="color:green;";
     startTimer();
+    renderQuestion();
+    renderResponses();
+    document.querySelector("button").style.display = "none";
+    // gets to first question
+    navigate(0);
+    // render next question
+    renderQuestion();
 };
+
+// new function to move to first question
+function renderQuestion() {
+  questionElement.textContent = questions[index].question;
+}
+
+// need to display options associated with the current selection
+// how do we know which current question (line 41 refer)
+function renderResponses() {
+  questions[index].responses
+  for (var i = 0; i < responses.length; i++) {
+    questionResponseElement.textContent = questions[index].responses;
+  }
+  console.log(questions[index].responses);
+}
 
 // Generating the data/carousel
 var questions = [
-  { question: "What is a function?", responses: [ "Reusable code", "Primitive value", "None of the above" ], answer: 0 }, { question: "what is an array?", responses: [ "List of values", "Key value pairs", "None of the above" ], answer: 2 }, { question: "What is a primitive value?", responses: [ "Only a Number", "A Boolean and a Symbol", "A Number, String, Boolean, Undefined, Symbol, and BigInt" ], answer: 2 }, { question: "What is the abbreviation JSON?", responses: [ "JASON", "JavaScript notation object", "None of the above" ], answer: 1 },
+  { question: "What is a function?", responses: ["Reusable code", "Primitive value", "None of the above"], answer: 0 }, { question: "what is an array?", responses: ["List of values", "Key value pairs", "None of the above"], answer: 2 }, { question: "What is a primitive value?", responses: ["Only a Number", "A Boolean and a Symbol", "A Number, String, Boolean, Undefined, Symbol, and BigInt"], answer: 2 }, { question: "What is the abbreviation JSON?", responses: ["JASON", "JavaScript notation object", "None of the above"], answer: 1 },
 ]
+
 
 // Navigate through the list of questions
 function navigate(direction) {
@@ -72,15 +95,16 @@ function renderAnswers() {
   }
 }
 
-// Event listener for when user clicks on next button
-next.addEventListener("click", function(event) {
-  navigate(1);
-});
+// // Event listener for when user clicks on next button
+// next.addEventListener("click", function(event) {
+//   navigate(1);
+//   renderQuestion();
+// });
 
-// Event listener for when user clicks on previous button
-prev.addEventListener("click", function(event) {
-  navigate(-1);
-});
+// // Event listener for when user clicks on previous button
+// prev.addEventListener("click", function(event) {
+//   navigate(-1);
+// });
 
-navigate(0);
+
 
