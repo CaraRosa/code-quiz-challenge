@@ -62,7 +62,7 @@ function renderResponses() {
 var questions = [
   { question: "What is a function?", 
   responses: ["Reusable code", "Primitive value", "None of the above"], 
-  answer: 0 }, 
+  answer: "Reusable code" }, 
   { question: "what is an array?", 
   responses: ["List of values", "Key value pairs", "None of the above"], 
   answer: 2 }, 
@@ -120,7 +120,19 @@ function renderAnswers() {
 // Click on the options
 document.getElementById("responses").addEventListener("click", click);
 
-function click() {
-    alert('click');
+function click(event) {
+  // what I am comparing
+    console.log(event.target.innerHTML);
+    // questions is the tree trunk. Target the branch: 0; Answer is my leaf.
+    console.log(questions[index].answer);
+    if (event.target.innerHTML == questions[index].answer) {
+      alert("You got it correct");
+
+    } else {
+      alert("You got it wrong");
+    }
   
 }
+
+// function for if they get time off clock
+// increment index value
