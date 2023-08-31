@@ -39,43 +39,93 @@ function start()
     
 };
 
-// new function to move to first question
+// Renders the question
 function renderQuestion() {
+  // Update the html with the current question
   questionElement.textContent = questions[index].question;
-
-
 }
+
+
 
 // need to display options (responses) associated with the current selection
-// how do we know which current question (line 41 refer)
+// how do we know which current question (line 45 refer)
 function renderResponses() {
-  questions[index].responses
+  // questions[index].responses
   for (var i = 0; i < responses.length; i++) {
-    questionResponseElement.textContent = questions[index].responses;
+
+    // questionElement.textContent = questions[index].responses;
+    // text += questions[index].responses;
   }
+ 
   console.log(questions[index].responses);
 }
-
-
 
 // Generating the data/carousel
 var questions = [
   { question: "What is a function?", 
   responses: ["Reusable code", "Primitive value", "None of the above"], 
   answer: "Reusable code" }, 
-  { question: "what is an array?", 
+  { question: "What is an array?", 
   responses: ["List of values", "Key value pairs", "None of the above"], 
-  answer: 2 }, 
+  answer: "None of the above" }, 
   { question: "What is a primitive value?", 
   responses: ["Only a Number", "A Boolean and a Symbol", "A Number, String, Boolean, Undefined, Symbol, and BigInt"], 
-  answer: 2 }, 
+  answer:  "A Number, String, Boolean, Undefined, Symbol, and BigInt"}, 
   { question: "What is the abbreviation JSON?", 
   responses: ["JASON", "JavaScript notation object", "None of the above"], 
-  answer: 1 },
+  answer: "JavaScript notation object" },
 ]
 
+function renderAnswers() {
+  console.log("questions object",questions[index]);
+  console.log("list of responses", questions[index].responses);
+  // Clears the html by settting innerHTML to an empty string.
+  questionResponseElement.innerHTML = "";
+  for (var i = 0; i < questions[index].responses.length; i++ ) {
+    console.log(questions[index].responses[i]);
+    var li = document.createElement("li");
+    li.textContent = questions[index].responses[i];
+    questionResponseElement.appendChild(li);
+  }
+}
 
-// Navigate through the list of questions
+// Click on the options
+document.getElementById("responses").addEventListener("click", checkAnswer);
+
+function checkAnswer(event) {
+  // what I am comparing
+    // console.log(event.target.innerHTML);
+    // console.log(questions[index].answer);
+    if (event.target.innerHTML == questions[index].answer) {
+      alert("You got it correct");
+      document.getElementById("question").style.display = "none";
+      document.getElementById("responses").style.display = "none";
+    } else {
+      alert("You got it wrong");
+      document.getElementById("question").style.display = "none";
+      document.getElementById("responses").style.display = "none";
+    }
+
+}
+
+
+
+
+// function for if they get time off clock
+// increment index value
+// function deductTime (event) {
+//   var counter = 20;
+//   if (event.target.innerHTML !== questions[index].answer) {
+//     counter = counter - 10;
+//   } else {
+//     counter;
+//   }
+// }
+
+
+
+
+
 function navigate(direction) {
   index = index + direction;
   // If the user tries to navigate "back" from the start:
@@ -92,47 +142,3 @@ function navigate(direction) {
   // Renders the answer
   renderAnswers();
 }
-
-// Renders the question
-function renderQuestion() {
-  // Update the html with the current question
-  questionElement.textContent = questions[index].question;
-}
-
-function renderAnswers() {
-  console.log("questions object",questions[index]);
-  console.log("list of responses", questions[index].responses);
-  // Clears the html by settting innerHTML to an empty string.
-  questionResponseElement.innerHTML = "";
-  for (var i = 0; i < questions[index].responses.length; i++ ) {
-    console.log(questions[index].responses[i]);
-    var li = document.createElement("li");
-    li.textContent = questions[index].responses[i];
-    questionResponseElement.appendChild(li);
-  }
-}
-
-// if loop that that says if a user chooses the right answer they get a message saying correct and if wrong answer they get a message saying wrong
-// if(questions.responses[index] === questions.answer[index]) {
-//   p.textContent = "Correct!";
-// }
-
-// Click on the options
-document.getElementById("responses").addEventListener("click", click);
-
-function click(event) {
-  // what I am comparing
-    console.log(event.target.innerHTML);
-    // questions is the tree trunk. Target the branch: 0; Answer is my leaf.
-    console.log(questions[index].answer);
-    if (event.target.innerHTML == questions[index].answer) {
-      alert("You got it correct");
-
-    } else {
-      alert("You got it wrong");
-    }
-  
-}
-
-// function for if they get time off clock
-// increment index value
