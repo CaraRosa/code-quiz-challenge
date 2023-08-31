@@ -34,13 +34,16 @@ THEN I can save my initials and score -->
     <div class="wrapper">
         <div class="carouselbox" aria-label="carousel">
            <!-- Timer -->
-           <span id="count" class="right-align">Timer</span> 
+           <span id="count" class="right-align">Timer</span>
+           <!-- avoid using js in html file -->
            <button class="center-button" onclick="start()">
             START
             </button>
         </div>
+        <p></p>
         <p id="question"></p>
         <ul id="responses"></ul>
+        <p id="msg"></p>
     </div>
    </div>
    
