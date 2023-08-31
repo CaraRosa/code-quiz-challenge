@@ -13,9 +13,8 @@ var index = 0;
 var questionResponseElement = document.querySelector("#responses");
 
 // Timer starts when user pushes start button
-
 function startTimer(){
-  var counter = 5;
+  var counter = 20;
   setInterval(function() {
     counter--;
     if (counter >= 0) {
@@ -27,22 +26,27 @@ function startTimer(){
 function start()
 {
     document.getElementById("count").style="color:green;";
+    // starts the timer after user pushes start button
     startTimer();
-    renderQuestion();
     renderResponses();
+    // Button dissapears after user pushes it
     document.querySelector("button").style.display = "none";
-    // gets to first question
+    // gets to first question and corresponding responses
     navigate(0);
     // render next question
     renderQuestion();
+
+    
 };
 
 // new function to move to first question
 function renderQuestion() {
   questionElement.textContent = questions[index].question;
+
+
 }
 
-// need to display options associated with the current selection
+// need to display options (responses) associated with the current selection
 // how do we know which current question (line 41 refer)
 function renderResponses() {
   questions[index].responses
@@ -52,9 +56,22 @@ function renderResponses() {
   console.log(questions[index].responses);
 }
 
+
+
 // Generating the data/carousel
 var questions = [
-  { question: "What is a function?", responses: ["Reusable code", "Primitive value", "None of the above"], answer: 0 }, { question: "what is an array?", responses: ["List of values", "Key value pairs", "None of the above"], answer: 2 }, { question: "What is a primitive value?", responses: ["Only a Number", "A Boolean and a Symbol", "A Number, String, Boolean, Undefined, Symbol, and BigInt"], answer: 2 }, { question: "What is the abbreviation JSON?", responses: ["JASON", "JavaScript notation object", "None of the above"], answer: 1 },
+  { question: "What is a function?", 
+  responses: ["Reusable code", "Primitive value", "None of the above"], 
+  answer: 0 }, 
+  { question: "what is an array?", 
+  responses: ["List of values", "Key value pairs", "None of the above"], 
+  answer: 2 }, 
+  { question: "What is a primitive value?", 
+  responses: ["Only a Number", "A Boolean and a Symbol", "A Number, String, Boolean, Undefined, Symbol, and BigInt"], 
+  answer: 2 }, 
+  { question: "What is the abbreviation JSON?", 
+  responses: ["JASON", "JavaScript notation object", "None of the above"], 
+  answer: 1 },
 ]
 
 
@@ -95,16 +112,15 @@ function renderAnswers() {
   }
 }
 
-// // Event listener for when user clicks on next button
-// next.addEventListener("click", function(event) {
-//   navigate(1);
-//   renderQuestion();
-// });
+// if loop that that says if a user chooses the right answer they get a message saying correct and if wrong answer they get a message saying wrong
+// if(questions.responses[index] === questions.answer[index]) {
+//   p.textContent = "Correct!";
+// }
 
-// // Event listener for when user clicks on previous button
-// prev.addEventListener("click", function(event) {
-//   navigate(-1);
-// });
+// Click on the options
+document.getElementById("responses").addEventListener("click", click);
 
-
-
+function click() {
+    alert('click');
+  
+}
