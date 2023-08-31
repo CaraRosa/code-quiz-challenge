@@ -33,25 +33,17 @@ THEN I can save my initials and score -->
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
     <div class="wrapper">
         <div class="carouselbox" aria-label="carousel">
-           
-            <button class="prev">
-                ◀ Previous
-            </button>
-            <button class="next">
-                Next ▶
+           <!-- Timer -->
+           <span id="count" class="right-align">Timer</span> 
+           <button class="center-button" onclick="start()">
+            START
             </button>
         </div>
         <p id="question"></p>
         <ul id="responses"></ul>
     </div>
    </div>
-
-   <!-- Timer -->
-   <span id="count">5</span> seconds
-<br>
-<button onclick="start()">
-START
-</button>
+   
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
