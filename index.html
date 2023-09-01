@@ -28,13 +28,14 @@ THEN I can save my initials and score -->
 <body>
     
     <!-- Introductory section that shows user how to play -->
-   <div class="container">
+    <!-- HIDE QUIZ -->
+   <div class="container" id="quiz">
     <h1>Coding Quiz Challenge</h1>
         <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.</p>
     <div class="wrapper">
         <div class="carouselbox" aria-label="carousel">
            <!-- Timer -->
-           <span id="count" class="right-align">Timer</span>
+           <p><span id="count" class="right-align"></span></p>
            <!-- avoid using js in html file -->
            <button class="center-button" onclick="start()">
             START
@@ -47,21 +48,23 @@ THEN I can save my initials and score -->
     </div>
    </div>
 
-   <!-- Section for User Initials -->
 
-   <section id="final">
-    <div>
-        <div></div>
-        <div>
-            <h2>All done!</h2>
-            <p>Your final score is: <span id="score">0</span></p>
-            <!-- <p class="score">Your final score is: </p> -->
-            <p>Enter initials: <span><input placeholder="initials" id="initials" /></span>
-                <button id="submit-score" class="btn">Submit</button>
-            </p>
-        </div>
+      <div class="card">
+        <h2>Last Registered User:</h2>
+        <p><strong>Initials:</strong> <span id="user-initials"></span></p>
+      </div>
     </div>
-</section>
+
+    <div class="quiz-end">
+        <h3>All done!</h3>
+        <p>Your final score is: <span id = "score"></span></p>
+        <form>
+            <label>Enter initials: </label>
+            <input text="text"/>
+            <button>Submit</button>
+        </form>
+    </div>
+   
    
     <script src="./assets/js/script.js"></script>
 </body>
