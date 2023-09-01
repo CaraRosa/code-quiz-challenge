@@ -10,11 +10,12 @@ var prev = carousel.querySelector(".prev");
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
+var counter = 20;
+
 var questionResponseElement = document.querySelector("#responses");
 
 // Timer starts when user pushes start button
 function startTimer(){
-  var counter = 20;
   setInterval(function() {
     counter--;
     if (counter >= 0) {
@@ -98,32 +99,29 @@ function checkAnswer(event) {
     // console.log(questions[index].answer);
     if (event.target.innerHTML == questions[index].answer) {
       alert("You got it correct");
-      document.getElementById("question").style.display = "none";
-      document.getElementById("responses").style.display = "none";
+      // document.getElementById("question").style.display = "none";
+      // document.getElementById("responses").style.display = "none";
     } else {
       alert("You got it wrong");
-      document.getElementById("question").style.display = "none";
-      document.getElementById("responses").style.display = "none";
+      deductTime();
+      // document.getElementById("question").style.display = "none";
+      // document.getElementById("responses").style.display = "none";
     }
-
+    // debugger;
+    if(index < questions.length - 1) {
+      index++;
+      renderQuestion();
+      renderAnswers();
+    }
 }
 
 
 
 
 // function for if they get time off clock
-// increment index value
-// function deductTime (event) {
-//   var counter = 20;
-//   if (event.target.innerHTML !== questions[index].answer) {
-//     counter = counter - 10;
-//   } else {
-//     counter;
-//   }
-// }
-
-
-
+function deductTime () {
+  counter = counter - 10; 
+}
 
 
 function navigate(direction) {
