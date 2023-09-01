@@ -1,26 +1,41 @@
 // Accessing elements by ID
 var questionElement = document.querySelector("#question");
 var responseElement = document.querySelector("#responses");
-// var startElement = document.getElementById("#timer");
+var submitInitialsBtn = document.querySelector("#submit-score");
+var userInput = document.querySelector("#initials");
+var submitButton = document.querySelector("#submit-initials");
+var msgDiv = document.querySelector("#msg");
+var initialsSpan = document.querySelector("#user-initials");
+var resultMSG = document.querySelector("#result");
+var quiz = document.querySelector("#quiz");
+
 
 // Accessing elements by class
 var carousel = document.querySelector(".carouselbox");
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
+var quizEnd = document.querySelector(".quiz-end");
+
+
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
-var counter = 20;
+var counter = 3;
 
 var questionResponseElement = document.querySelector("#responses");
 
 // Timer starts when user pushes start button
 function startTimer(){
-  setInterval(function() {
+  var intervalId = setInterval(function() {
     counter--;
     if (counter >= 0) {
-      span = document.getElementById("count");
-      span.innerHTML = "Time left: " + counter;
+      p = document.getElementById("count");
+      p.innerHTML = "Time left: " + counter;
+    }
+    if (counter === 0) {
+      clearInterval(intervalId);
+      quizEnd.style.display = "block";
+      quiz.style.display = "none";
     }
   }, 1000);
 }
@@ -98,14 +113,10 @@ function checkAnswer(event) {
     // console.log(event.target.innerHTML);
     // console.log(questions[index].answer);
     if (event.target.innerHTML == questions[index].answer) {
-      alert("You got it correct");
-      // document.getElementById("question").style.display = "none";
-      // document.getElementById("responses").style.display = "none";
+      resultMSG.textContent = "Right!";
     } else {
-      alert("You got it wrong");
+      resultMSG.textContent = "Wrong!";
       deductTime();
-      // document.getElementById("question").style.display = "none";
-      // document.getElementById("responses").style.display = "none";
     }
     // debugger;
     if(index < questions.length - 1) {
@@ -114,9 +125,6 @@ function checkAnswer(event) {
       renderAnswers();
     }
 }
-
-
-
 
 // function for if they get time off clock
 function deductTime () {
@@ -140,3 +148,88 @@ function navigate(direction) {
   // Renders the answer
   renderAnswers();
 }
+
+
+// function displayRightWrong(type, message) {
+//   responsesUL.textContent 
+// }
+
+// calls this function
+
+
+function displayMessage(type, message) {
+  msgDiv.textContent = message;
+  msgDiv.setAttribute("class", type);
+}
+
+function renderLastRegistered() {
+  // TODO: Retrieve the last email and password and render it to the page
+  // Setting the variables
+  initialsSpan.textContent = localStorage.getItem("initials");
+
+
+}
+
+submitButton.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var initials = document.querySelector("#initials").value;
+
+  if (initials === "") {
+    displayMessage("error", "Initials cannot be blank");
+  } else {
+    displayMessage("success", "Successfuly submitted");
+
+  // TODO: Save email and password to localStorage and render the last registered user
+ localStorage.setItem("initials", initials);
+ renderLastRegistered();
+}
+});
+
+function endQuiz() {
+    clearInterval(timer); // Stop the timer if it's still running
+
+    // Hide the question and responses elements
+    questionElement.style.display = "none";
+    responseElement.style.display = "none";
+
+    // Show the input for entering initials and a submit button
+    userInput.style.display = "block";
+    submitButton.style.display = "block";
+
+    // Optionally, update a message to inform the user that the quiz has ended
+    msgDiv.textContent = "Quiz Completed. Enter your initials and submit your score.";
+
+    // Optionally, update any other elements or messages as needed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// function userInput() {
+//   if (index === questions.length) {
+
+//   }
+// }
+
+// function renderSubmission() {
+
+// }
+
+// function renderLastInitials() {
+//   userInitialsSpan.textContent = localStorage.getItem("initials");
+// }
+
+// submitInitialsBtn.addEventListener("click", function(event) {
+//   event.preventDefault();
+//   var initials = document.querySelector("#initials").value;
+// })
+
