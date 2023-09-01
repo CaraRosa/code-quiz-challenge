@@ -7,20 +7,18 @@ var submitButton = document.querySelector("#submit-initials");
 var msgDiv = document.querySelector("#msg");
 var initialsSpan = document.querySelector("#user-initials");
 var resultMSG = document.querySelector("#result");
-var quiz = document.querySelector("#quiz");
 
 
 // Accessing elements by class
 var carousel = document.querySelector(".carouselbox");
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
-var quizEnd = document.querySelector(".quiz-end");
 
 
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
-var counter = 3;
+var counter = 30;
 
 var questionResponseElement = document.querySelector("#responses");
 
@@ -29,13 +27,8 @@ function startTimer(){
   var intervalId = setInterval(function() {
     counter--;
     if (counter >= 0) {
-      p = document.getElementById("count");
-      p.innerHTML = "Time left: " + counter;
-    }
-    if (counter === 0) {
-      clearInterval(intervalId);
-      quizEnd.style.display = "block";
-      quiz.style.display = "none";
+      span = document.getElementById("count");
+      span.innerHTML = "Time left: " + counter;
     }
   }, 1000);
 }
@@ -113,12 +106,11 @@ function checkAnswer(event) {
     // console.log(event.target.innerHTML);
     // console.log(questions[index].answer);
     if (event.target.innerHTML == questions[index].answer) {
-      resultMSG.textContent = "Right!";
+      alert("Right");
     } else {
-      resultMSG.textContent = "Wrong!";
+      alert("Wrong!");
       deductTime();
     }
-    // debugger;
     if(index < questions.length - 1) {
       index++;
       renderQuestion();
@@ -170,38 +162,7 @@ function renderLastRegistered() {
 
 }
 
-submitButton.addEventListener("click", function(event) {
-  event.preventDefault();
 
-  var initials = document.querySelector("#initials").value;
-
-  if (initials === "") {
-    displayMessage("error", "Initials cannot be blank");
-  } else {
-    displayMessage("success", "Successfuly submitted");
-
-  // TODO: Save email and password to localStorage and render the last registered user
- localStorage.setItem("initials", initials);
- renderLastRegistered();
-}
-});
-
-function endQuiz() {
-    clearInterval(timer); // Stop the timer if it's still running
-
-    // Hide the question and responses elements
-    questionElement.style.display = "none";
-    responseElement.style.display = "none";
-
-    // Show the input for entering initials and a submit button
-    userInput.style.display = "block";
-    submitButton.style.display = "block";
-
-    // Optionally, update a message to inform the user that the quiz has ended
-    msgDiv.textContent = "Quiz Completed. Enter your initials and submit your score.";
-
-    // Optionally, update any other elements or messages as needed
-}
 
 
 
@@ -232,4 +193,5 @@ function endQuiz() {
 //   event.preventDefault();
 //   var initials = document.querySelector("#initials").value;
 // })
+
 
