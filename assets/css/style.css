@@ -97,16 +97,24 @@ body {
     
 }
 
-.button:active {
-    color: plum;
-    transform: translateY(4px);
+
+
+.center-button:active {
+    color: green;
 }
 
+/* ID Selectors */
 #responses {
     list-style: none;
 }
 
+#result {
+    font-size: 15px;
+    color: orange;
+}
 
+/* Class Selector */
+/* Hides the input form until the user reaches the end of quiz or runs out of time */
 .quiz-end {
     display: none;
 }
