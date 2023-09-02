@@ -7,30 +7,44 @@ var submitButton = document.querySelector("#submit-initials");
 var msgDiv = document.querySelector("#msg");
 var initialsSpan = document.querySelector("#user-initials");
 var resultMSG = document.querySelector("#result");
+var quiz = document.querySelector("#quiz");
 
 
 // Accessing elements by class
 var carousel = document.querySelector(".carouselbox");
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
-
+var quizEnd = document.querySelector(".quiz-end");
+var scoreElement = document.querySelector("#score");
 
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
 var counter = 30;
-
+var score = 0;
 var questionResponseElement = document.querySelector("#responses");
 
+var isQuizOver = false;
 // Timer starts when user pushes start button
 function startTimer(){
   var intervalId = setInterval(function() {
-    counter--;
+    
+
     if (counter >= 0) {
       span = document.getElementById("count");
       span.innerHTML = "Time left: " + counter;
     }
+    if( counter === 0 || isQuizOver) {
+      clearInterval(intervalId);
+      endQuiz();
+      return;
+    
+    }
+    counter--;
+    counter.textContent = counter;
+
   }, 1000);
+  
 }
 function start()
 {
@@ -44,10 +58,41 @@ function start()
     navigate(0);
     // render next question
     renderQuestion();
-
     
 };
 
+// Displays the best score and input box for the user initials after user fi
+function endQuiz() {
+  // if quiz is not over
+  if(!isQuizOver) {
+  quizEnd.style.display = "block";
+  quiz.style.display = "none";
+  isQuizOver = true;
+  updateScore(counter);
+}
+}
+
+// updates the user score
+function updateScore(value) {
+  var newScore = score + value;
+  if (newScore > 0) {
+  score = newScore;
+} else {
+  score = 0;
+}
+scoreElement.textContent = score;
+}
+
+function nextQuestion() {
+  if (index < questions.length - 1) {
+    index++;
+    renderQuestion();
+    renderAnswers();
+} else {
+  endQuiz();
+}
+  }
+  
 // Renders the question
 function renderQuestion() {
   // Update the html with the current question
@@ -106,21 +151,32 @@ function checkAnswer(event) {
     // console.log(event.target.innerHTML);
     // console.log(questions[index].answer);
     if (event.target.innerHTML == questions[index].answer) {
-      alert("Right");
+      resultMSG.textContent = "Correct!";
+      updateScore(10);
+      
     } else {
-      alert("Wrong!");
+      resultMSG.textContent = "Incorrect!";
       deductTime();
+      updateScore(-10);
     }
     if(index < questions.length - 1) {
       index++;
       renderQuestion();
       renderAnswers();
+    } else {
+      endQuiz;
     }
+    console.log(score);
 }
 
 // function for if they get time off clock
 function deductTime () {
-  counter = counter - 10; 
+  if(counter > 10) {
+    counter = counter - 10; 
+  } else {
+    counter = 0;
+  }
+  
 }
 
 
@@ -161,37 +217,3 @@ function renderLastRegistered() {
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function userInput() {
-//   if (index === questions.length) {
-
-//   }
-// }
-
-// function renderSubmission() {
-
-// }
-
-// function renderLastInitials() {
-//   userInitialsSpan.textContent = localStorage.getItem("initials");
-// }
-
-// submitInitialsBtn.addEventListener("click", function(event) {
-//   event.preventDefault();
-//   var initials = document.querySelector("#initials").value;
-// })
-
-
