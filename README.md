@@ -9,7 +9,7 @@ The Code Quiz Challenge highlights the use of JavaScript. Utilizing JavaScript (
 ## Installation
 
 No installation is necessary. The link to the webpage is here:
-[Code Quiz Webpage]().
+[Code Quiz Webpage](https://cararosa.github.io/code-quiz-challenge/).
 
 Below is a screenshot of the Code Quiz Webpage:
 ![Alt text](./assets/images/CodeQuizWebpage.png)
