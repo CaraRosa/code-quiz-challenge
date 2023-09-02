@@ -1,19 +1,11 @@
 // Accessing elements by ID
 var questionElement = document.querySelector("#question");
 var responseElement = document.querySelector("#responses");
-var submitInitialsBtn = document.querySelector("#submit-score");
-var userInput = document.querySelector("#initials");
-var submitButton = document.querySelector("#submit-initials");
-var msgDiv = document.querySelector("#msg");
-var initialsSpan = document.querySelector("#user-initials");
 var resultMSG = document.querySelector("#result");
 var quiz = document.querySelector("#quiz");
 
 
 // Accessing elements by class
-var carousel = document.querySelector(".carouselbox");
-var next = carousel.querySelector(".next");
-var prev = carousel.querySelector(".prev");
 var quizEnd = document.querySelector(".quiz-end");
 var scoreElement = document.querySelector("#score");
 
@@ -195,25 +187,4 @@ function navigate(direction) {
   renderQuestion();
   // Renders the answer
   renderAnswers();
-}
-
-
-// function displayRightWrong(type, message) {
-//   responsesUL.textContent 
-// }
-
-// calls this function
-
-
-function displayMessage(type, message) {
-  msgDiv.textContent = message;
-  msgDiv.setAttribute("class", type);
-}
-
-function renderLastRegistered() {
-  // TODO: Retrieve the last email and password and render it to the page
-  // Setting the variables
-  initialsSpan.textContent = localStorage.getItem("initials");
-
-
 }
