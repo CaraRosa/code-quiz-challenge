@@ -3,6 +3,7 @@ var questionElement = document.querySelector("#question");
 var responseElement = document.querySelector("#responses");
 var resultMSG = document.querySelector("#result");
 var quiz = document.querySelector("#quiz");
+var submitButton = document.querySelector("submitButton");
 
 
 // Accessing elements by class
@@ -12,7 +13,7 @@ var scoreElement = document.querySelector("#score");
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
-var counter = 30;
+var counter = 5;
 var score = 0;
 var questionResponseElement = document.querySelector("#responses");
 
@@ -53,15 +54,15 @@ function start()
     
 };
 
-// Displays the best score and input box for the user initials after user fi
+// Displays the best score and input box for the user initials after user completes quiz
 function endQuiz() {
   // if quiz is not over
   if(!isQuizOver) {
-  quizEnd.style.display = "block";
-  quiz.style.display = "none";
-  isQuizOver = true;
-  updateScore(counter);
-}
+    quizEnd.style.display = "block";
+    quiz.style.display = "none";
+    isQuizOver = true;
+    updateScore(counter);
+  }
 }
 
 // updates the user score
@@ -176,15 +177,30 @@ function navigate(direction) {
   index = index + direction;
   // If the user tries to navigate "back" from the start:
   // Go to last question
-  if (index < 0) {
-    index = questions.length - 1;
-    // If the user is at the very end
-    // Go to the first question
-  } else if (index > questions.length - 1) {
-    index = 0;
-  }
+  // if (index < 0) {
+  //   index = questions.length - 1;
+  //   // If the user is at the very end
+  //   // Go to the first question
+  // } else if (index > questions.length - 1) {
+  //   index = 0;
+  // }
   // Renders the question
   renderQuestion();
   // Renders the answer
   renderAnswers();
 }
+
+// adds an event listener to the submitButton
+document.getElementById("submitButton").addEventListener("click", function(event) {
+  // prevents the form from submitting
+event.preventDefault();
+var initials = document.getElementById("initialsInput").value;
+
+if (initials.trim() !== "") {
+  localStorage.setItem("userInitials", initials);
+  console.log("initials", initials)
+} else {
+  console.log("Please enter your initials.")
+}
+
+})
