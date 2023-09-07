@@ -4,11 +4,13 @@ var responseElement = document.querySelector("#responses");
 var resultMSG = document.querySelector("#result");
 var quiz = document.querySelector("#quiz");
 var submitButton = document.querySelector("submitButton");
+var scoreElement = document.querySelector("#score");
 
 
 // Accessing elements by class
 var quizEnd = document.querySelector(".quiz-end");
-var scoreElement = document.querySelector("#score");
+var newPage = document.querySelector(".new-page")
+
 
 
 // Sets the index (number of questions) to 0 (first question)
@@ -190,17 +192,42 @@ function navigate(direction) {
   renderAnswers();
 }
 
-// adds an event listener to the submitButton
+if (localStorage.getItem("userScore")) {
+  var quizScores = JSON.parse(localStorage.getItem("userScore"));
+} else {
+  var quizScores = [];
+}
+console.log(typeof quizScores);
+
+// adds an event listener to the submitButton when user submits initials
 document.getElementById("submitButton").addEventListener("click", function(event) {
   // prevents the form from submitting
 event.preventDefault();
+
 var initials = document.getElementById("initialsInput").value;
+var score = document.getElementById("score").innerHTML;
+
+// object
+var userScore = {
+  userInitial: initials,
+  userScore: score,
+}
+
+// var quizScores = `[{
+//   userInitial: initials,
+//   userScore: score,
+// }]`
 
 if (initials.trim() !== "") {
-  localStorage.setItem("userInitials", initials);
+  quizScores.push(userScore);
+  localStorage.setItem("userScore", JSON.stringify(quizScores));
   console.log("initials", initials)
 } else {
   console.log("Please enter your initials.")
 }
 
-})
+});
+
+
+
+
