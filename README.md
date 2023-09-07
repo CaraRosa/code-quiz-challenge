@@ -16,7 +16,7 @@ Below is a screenshot of the Code Quiz Webpage:
 
 ## Credits
 
-I used StackOverflow to help set up the timer and allow the timer to start after the user pushes the start button. This code can be found in the index.html file and the script.js file in the folder assets and the subfolder js. My tutor was able to help me with logically coding how to tell the user if the right answer or the wrong answer was chosen. This code can be found in the script.js file. The AskBCS helped me in with an if statement for incrementing the index. This code can be found in script.js. My instructor was able to assist me with the code needed for moving to the next question after the user clicked on a response. This code can be found in the script.js file. He also helped in the code for decremening the time when the user chose an incorrect response.
+I used StackOverflow to help set up the timer and allow the timer to start after the user pushes the start button. This code can be found in the index.html file and the script.js file in the folder assets and the subfolder js. My tutor was able to help me with logically coding how to tell the user if the right answer or the wrong answer was chosen. This code can be found in the script.js file. The AskBCS helped me in with an if statement for incrementing the index. This code can be found in script.js. My instructor was able to assist me with the code needed for moving to the next question after the user clicked on a response. This code can be found in the script.js file. He also helped in the code for decremening the time when the user chose an incorrect response. I utilizeed StackOverflow to help code the part that allows the user to click on the go back button to return to the beginning of the code quiz.
 
 ## License
 
