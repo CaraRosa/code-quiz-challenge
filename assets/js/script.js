@@ -15,7 +15,7 @@ var newPage = document.querySelector(".new-page");
 
 // Sets the index (number of questions) to 0 (first question)
 var index = 0;
-var counter = 5;
+var counter = 30;
 var score = 0;
 var questionResponseElement = document.querySelector("#responses");
 
@@ -95,9 +95,6 @@ function renderQuestion() {
 }
 
 
-
-// need to display options (responses) associated with the current selection
-// how do we know which current question (line 45 refer)
 function renderResponses() {
   // questions[index].responses
   for (var i = 0; i < responses.length; i++) {
@@ -174,18 +171,10 @@ function deductTime () {
   
 }
 
-
+// function to render questions and answers
 function navigate(direction) {
   index = index + direction;
-  // If the user tries to navigate "back" from the start:
-  // Go to last question
-  // if (index < 0) {
-  //   index = questions.length - 1;
-  //   // If the user is at the very end
-  //   // Go to the first question
-  // } else if (index > questions.length - 1) {
-  //   index = 0;
-  // }
+  
   // Renders the question
   renderQuestion();
   // Renders the answer
@@ -212,11 +201,6 @@ var userScore = {
   userInitial: initials,
   userScore: score,
 }
-
-// var quizScores = `[{
-//   userInitial: initials,
-//   userScore: score,
-// }]`
 
 if (initials.trim() !== "") {
   quizScores.push(userScore);
