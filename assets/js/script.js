@@ -3,9 +3,9 @@ var questionElement = document.querySelector("#question");
 var responseElement = document.querySelector("#responses");
 var resultMSG = document.querySelector("#result");
 var quiz = document.querySelector("#quiz");
-var submitButton = document.querySelector("submitButton");
+var submitButton = document.querySelector("#submitButton");
 var scoreElement = document.querySelector("#score");
-
+var firstPage = document.querySelector("#first-page");
 
 // Accessing elements by class
 var quizEnd = document.querySelector(".quiz-end");
@@ -228,6 +228,23 @@ if (initials.trim() !== "") {
 
 });
 
+// when user clicks the submit button it takes them to the high scores page
+document.getElementById("submitButton").onclick = function () {
+  window.location.href = "highscores.html";
+};
 
+document.getElementById("first-page").onclick = function () {
+  window.location.href = "quiz.html"
+}
 
-
+document.getElementById("first-page").onclick = function () {
+  // starts the timer after user pushes start button
+  startTimer();
+  renderResponses();
+  // Button dissapears after user pushes it
+  document.querySelector("button").style.display = "none";
+  // gets to first question and corresponding responses
+  navigate(0);
+  // render next question
+  renderQuestion();
+}
